@@ -7,19 +7,57 @@
 
 ## 安装 Go
 
-推荐使用 [SJTUG 镜像源](https://mirrors.sjtug.sjtu.edu.cn/docs/ubuntu) 加速下载。执行以下命令修改并更新软件源：
+本项目需要 Go 1.18 或以上版本。
+
+删除旧版本 Go：
 
 ```bash
-sudo sed -i 's/http:\/\/archive.ubuntu.com/https:\/\/mirror.sjtu.edu.cn/g' /etc/apt/sources.list
-sudo apt update
+sudo rm -rf /usr/local/go
 ```
 
-[安装 Go](https://github.com/golang/go/wiki/Ubuntu)：
+下载 Go 安装包：（你可以从 [Go 官网](https://go.dev/dl/) 获取最新版本下载链接）
 
 ```bash
-sudo add-apt-repository ppa:longsleep/golang-backports
-sudo apt update
-sudo apt install golang-go
+wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz
+```
+
+解压到 `/usr/local` 目录：
+
+```bash
+sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+```
+
+编辑 `/etc/environment` 文件，在 PATH 变量末尾添加 `/usr/local/go/bin`。
+
+<details>
+<summary>如何编辑 /etc/environment 文件？</summary>
+运行以下命令：
+
+```bash
+sudo nano /etc/environment
+```
+
+修改完成后，按 `Ctrl + X` 退出，按 `Y` 保存，按 `Enter` 确认。
+</details>
+
+例如，如果 `/etc/environment` 文件中的 PATH 变量为：
+
+```plain
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+```
+
+则修改为：
+
+```plain
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin"
+```
+
+重启终端使环境变量生效。
+
+之后运行以下命令检查 Go 版本：
+
+```bash
+go version
 ```
 
 配置 [Go 模块代理](https://goproxy.cn/) 加速 Go 模块的下载：
