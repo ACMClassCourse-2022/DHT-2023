@@ -28,6 +28,8 @@
 
 推荐 Debug 方式：使用 [logrus](https://github.com/sirupsen/logrus) 库将每个节点的行为记录下来并分析。
 
+生成的 log 文件可能非常大（几百 MB），许多文本编辑器不能正常地打开和浏览它。这里推荐使用 [Klogg](https://klogg.filimonov.dev/) 软件浏览 log。
+
 ## 关于 Application
 
 欢迎任何天马行空的想法。以下是示例：
