@@ -27,29 +27,10 @@ wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
 ```
 
-编辑 `/etc/environment` 文件，在 PATH 变量末尾添加 `/usr/local/go/bin`。
-
-<details>
-<summary>如何编辑 /etc/environment 文件？</summary>
-运行以下命令：
+将 `/usr/local/go/bin` 目录添加到 PATH 环境变量中：
 
 ```bash
-sudo nano /etc/environment
-```
-
-修改完成后，按 `Ctrl + X` 退出，按 `Y` 保存，按 `Enter` 确认。
-</details>
-
-例如，如果 `/etc/environment` 文件中的 PATH 变量为：
-
-```plain
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-```
-
-则修改为：
-
-```plain
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/go/bin"
+echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
 ```
 
 重启终端使环境变量生效。
