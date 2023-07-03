@@ -18,7 +18,7 @@ sudo rm -rf /usr/local/go
 下载 Go 安装包：（你可以从 [Go 官网](https://go.dev/dl/) 获取最新版本下载链接）
 
 ```bash
-wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz
+curl -LO "https://go.dev/dl/go1.20.5.linux-amd64.tar.gz"
 ```
 
 解压到 `/usr/local` 目录：
@@ -27,7 +27,15 @@ wget https://go.dev/dl/go1.20.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
 ```
 
-将 `/usr/local/go/bin` 目录添加到 PATH 环境变量中：
+将 `/usr/local/go/bin` 目录添加到 PATH 环境变量中。
+
+如果你使用的是 zsh，执行以下命令：
+
+```bash
+echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.zshrc
+```
+
+如果你使用的是 bash，执行以下命令：
 
 ```bash
 echo 'export PATH="$PATH:/usr/local/go/bin"' >> ~/.bashrc
